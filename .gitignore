@@ -4,3 +4,4 @@ env/
 .cache/
 .streamlit/
 files/
+requirements_backup.txt
