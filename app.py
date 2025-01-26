@@ -275,7 +275,7 @@ def main():
         st.write(
             "##### Step 2. Enter the topic you want to research in the input field below"
         )
-        client = OpenAI(openai_api_key=OPENAI_API_KEY)
+        client = OpenAI(api_key=OPENAI_API_KEY)
 
         if "assistant" not in st.session_state:
             assistants = client.beta.assistants.list()
@@ -358,12 +358,11 @@ with st.sidebar:
     )
 
     if openai_api_key:
-        if openai_api_key:
-            if validate_openai_api_key(openai_api_key):
-                OPENAI_API_KEY = openai_api_key
-                st.success("Your API Key is valid!")
-            else:
-                st.error("Invalid OpenAI API Key. Please check and try again.")
+        if validate_openai_api_key(openai_api_key):
+            OPENAI_API_KEY = openai_api_key
+            st.success("Your API Key is valid!")
+        else:
+            st.error("Invalid OpenAI API Key. Please check and try again.")
     st.link_button(
         "GitHub Repo",
         "https://github.com/verobeach7/assistant-gpt/commits/main/",
